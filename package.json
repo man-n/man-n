@@ -1,0 +1,34 @@
+{
+  "name": "man-n",
+  "version": "0.0.0",
+  "description": "Browse npm with man",
+  "license": "MIT",
+  "keywords": [
+    "npm",
+    "github",
+    "readme",
+    "man",
+    "n"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/man-n/man-n.git"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "preferGlobal": true,
+  "bin": {
+    "man-n": "bin/man-n"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "bin"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "^2.10.0"
+  },
+  "scripts": {
+    "test": "standard"
+  }
+}
