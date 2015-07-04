@@ -5,7 +5,7 @@
 #
 
 input=$(mktemp)
-prefix=$(dirname $0)
+prefix=$(dirname `readlink -f $0`)
 mdast="$prefix/../node_modules/.bin/mdast"
 mdastMan="$prefix/../node_modules/mdast-man"
 
