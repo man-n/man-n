@@ -20,15 +20,10 @@
     "man-n": "bin/man-n"
   },
   "files": [
-    "index.js",
-    "lib",
     "bin"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "standard": "^2.10.0"
-  },
-  "scripts": {
-    "test": "standard"
+  "dependencies": {
+    "mdast": "^0.26.0",
+    "mdast-man": "^0.2.0"
   }
 }

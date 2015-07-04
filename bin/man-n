@@ -1,2 +1,16 @@
-#!/usr/bin/env node
-'use strict'
+#!/bin/sh
+
+input=$(mktemp)
+
+name="$1"
+description=$(npm view "$name" description)
+version=$(npm view "$name" version)
+section="n"
+manual="npm"
+
+options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"$description\",manual:\"$manual\""
+
+npm view "$name" readme |
+  node_modules/.bin/mdast --no-ignore --no-rc --silent --use "node_modules/mdast-man=$options" > "$input"
+
+man "$input"
