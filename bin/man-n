@@ -1,6 +1,17 @@
 #!/bin/sh
 
+#
+# Constants.
+#
+
 input=$(mktemp)
+prefix=$(dirname $0)
+mdast="$prefix/../node_modules/.bin/mdast"
+mdastMan="$prefix/../node_modules/mdast-man"
+
+#
+# Options.
+#
 
 name="$1"
 description=$(npm view "$name" description)
@@ -10,7 +21,15 @@ manual="npm"
 
 options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"$description\",manual:\"$manual\""
 
+#
+# Create man-page.
+#
+
 npm view "$name" readme |
-  node_modules/.bin/mdast --no-ignore --no-rc --silent --use "node_modules/mdast-man=$options" > "$input"
+  $mdast --no-ignore --no-rc --silent --use "$mdastMan=$options" > "$input"
+
+#
+# Show man page.
+#
 
 man "$input"
