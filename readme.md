@@ -10,7 +10,19 @@ $ npm install -g man-n
 
 ## Usage
 ```sh
-$ man-n <package>
+$ man-n -h
+  Usage: man-n [options] <package>
+
+  Options:
+
+    -h, --help  output usage information
+    -l, --link  link `man-n` to `man n`
+
+  Examples:
+
+    $ man-n browserify  # show the browserify documentation
+    $ man-n --link      # link `man-n` to `man n`
+    $ man n browserify  # show the browserify documentation
 ```
 
 ## Aliasing
