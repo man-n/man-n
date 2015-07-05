@@ -45,22 +45,15 @@ if [ "$1" = "--linked" ]; then shift;
 fi
 
 #
-# Trigger help.
+# CLI flags
 #
 
-readonly name="$1"
-[ ! "$name" ] && usage && exit 1
-[ "$name" = '-h' ] && usage && exit 0
-[ "$name" = '--help' ] && usage && exit 0
-
-#
-# Link.
-#
-
-if [ "$name" = "--link" ]; then
-  echo "alias \"man=man-n --linked\""
-  exit
-fi
+case $1 in
+  "")         usage; exit 1 ;;
+  -h|--help)  usage; exit ;;
+  --link)     echo "alias \"man=man-n --linked\""; exit ;;
+  *)          readonly name=$1 ;;
+esac
 
 #
 # Options.
