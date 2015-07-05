@@ -64,14 +64,23 @@ readonly version="$(npm view "$name" version)"
 readonly section="n"
 readonly manual="npm"
 
-readonly options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"$description\",manual:\"$manual\""
+readonly options="\
+  name:\"$name\", \
+  version:\"$version\", \
+  section:\"$section\", \
+  description:\"$description\", \
+  manual:\"$manual\" \
+"
 
 #
 # Create man-page.
 #
 
-npm view "$name" readme |
-  $mdast --no-ignore --no-rc --silent --use "$badges" --use "$mdastMan=$options" > "$input"
+npm view "$name" readme \
+  | $mdast --no-ignore --no-rc --silent \
+    --use "$badges" \
+    --use "$mdastMan=$options" \
+  > "$input"
 
 #
 # Show man page.
