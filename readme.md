@@ -32,7 +32,7 @@ Tired of typing that dash? Add the following to your `.bashrc`,
 
 ```sh
 # Link `man-n` to `man n`
-eval $(man-n --link)
+$ which man-n && eval $(man-n --link)
 ```
 
 ...and from now on, you can just type `man n` to access package
