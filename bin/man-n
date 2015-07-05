@@ -4,12 +4,12 @@
 # Constants.
 #
 
-original="$(which man)"
-input="$(mktemp -t "manXXXXX")"
-prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
-mdast="$prefix/.bin/mdast"
-mdastMan="$prefix/mdast-man"
-badges="$prefix/mdast-strip-badges"
+readonly original="$(which man)"
+readonly input="$(mktemp -t "manXXXXX")"
+readonly prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
+readonly mdast="$prefix/.bin/mdast"
+readonly mdastMan="$prefix/mdast-man"
+readonly badges="$prefix/mdast-strip-badges"
 
 #
 # Usage.
