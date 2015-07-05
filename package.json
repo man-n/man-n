@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "mdast": "^0.26.0",
-    "mdast-man": "^0.2.0",
+    "mdast-man": "^0.3.0",
     "mdast-strip-badges": "^0.1.0"
   }
 }
