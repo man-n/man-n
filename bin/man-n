@@ -51,7 +51,7 @@ fi
 case $1 in
   "")         usage; exit 1 ;;
   -h|--help)  usage; exit ;;
-  --link)     echo "alias \"man=man-n --linked\""; exit ;;
+  --link)     echo 'alias "man=man-n --linked"'; exit ;;
   *)          readonly name=$1 ;;
 esac
 
