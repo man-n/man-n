@@ -36,27 +36,19 @@ EOF
 # If `--linked`, detect if this is a `n` page.
 #
 
-if [ "$1" = "--linked" ]; then
-  if [ "$2" = "n" ]; then
-    if [ "$3" = "" ]; then
-      usage
-      exit
-    fi
-
-    name="$3"
+if [ "$1" = "--linked" ]; then shift;
+  if [ "$1" = "n" ]; then shift;
   else
-    shift
     "$original" "$@"
     exit
   fi
-else
-  name="$1"
 fi
 
 #
 # Trigger help.
 #
 
+readonly name="$1"
 [ ! "$name" ] && usage && exit 1
 [ "$name" = '-h' ] && usage && exit 0
 [ "$name" = '--help' ] && usage && exit 0
