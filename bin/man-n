@@ -5,9 +5,10 @@
 #
 
 input=$(mktemp -t "manXXXXX")
-prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")"
-mdast="$prefix/../node_modules/.bin/mdast"
-mdastMan="$prefix/../node_modules/mdast-man"
+prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
+mdast="$prefix/.bin/mdast"
+mdastMan="$prefix/mdast-man"
+badges="$prefix/mdast-strip-badges"
 
 #
 # Options.
@@ -26,7 +27,7 @@ options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"
 #
 
 npm view "$name" readme |
-  $mdast --no-ignore --no-rc --silent --use "$mdastMan=$options" > "$input"
+  $mdast --no-ignore --no-rc --silent --use "$badges" --use "$mdastMan=$options" > "$input"
 
 #
 # Show man page.
