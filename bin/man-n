@@ -4,6 +4,7 @@
 # Constants.
 #
 
+original=$(which man)
 input=$(mktemp -t "manXXXXX")
 prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
 mdast="$prefix/.bin/mdast"
@@ -18,15 +19,48 @@ usage () {
   echo 'usage: man-n <package>'
 }
 
-[ ! "$1" ] && usage && exit 1
-[ "$1" = '-h' ] && usage && exit 0
-[ "$1" = '--help' ] && usage && exit 0
+#
+# If `--linked`, detect if this is a `n` page.
+#
+
+if [ "$1" = "--linked" ]; then
+  if [ "$2" = "n" ]; then
+    if [ "$3" = "" ]; then
+      usage
+      exit
+    fi
+
+    name="$3"
+  else
+    shift
+    $original "$@"
+    exit
+  fi
+else
+  name="$1"
+fi
+
+#
+# Trigger help.
+#
+
+[ ! "$name" ] && usage && exit 1
+[ "$name" = '-h' ] && usage && exit 0
+[ "$name" = '--help' ] && usage && exit 0
+
+#
+# Link.
+#
+
+if [ "$name" = "--link" ]; then
+  echo "alias \"man=man-n --linked\""
+  exit
+fi
 
 #
 # Options.
 #
 
-name="$1"
 description=$(npm view "$name" description)
 version=$(npm view "$name" version)
 section="n"
