@@ -4,8 +4,8 @@
 # Constants.
 #
 
-original=$(which man)
-input=$(mktemp -t "manXXXXX")
+original="$(which man)"
+input="$(mktemp -t "manXXXXX")"
 prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
 mdast="$prefix/.bin/mdast"
 mdastMan="$prefix/mdast-man"
@@ -46,7 +46,7 @@ if [ "$1" = "--linked" ]; then
     name="$3"
   else
     shift
-    $original "$@"
+    "$original" "$@"
     exit
   fi
 else
@@ -74,12 +74,12 @@ fi
 # Options.
 #
 
-description=$(npm view "$name" description)
-version=$(npm view "$name" version)
-section="n"
-manual="npm"
+readonly description="$(npm view "$name" description)"
+readonly version="$(npm view "$name" version)"
+readonly section="n"
+readonly manual="npm"
 
-options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"$description\",manual:\"$manual\""
+readonly options="name:\"$name\",version:\"$version\",section:\"$section\",description:\"$description\",manual:\"$manual\""
 
 #
 # Create man-page.
