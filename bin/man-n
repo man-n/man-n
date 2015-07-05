@@ -4,8 +4,8 @@
 # Constants.
 #
 
-input=$(mktemp)
-prefix=$(dirname `readlink -f $0`)
+input=$(mktemp -t "manXXXXX")
+prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")"
 mdast="$prefix/../node_modules/.bin/mdast"
 mdastMan="$prefix/../node_modules/mdast-man"
 
