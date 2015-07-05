@@ -1,6 +1,7 @@
-# ![man-n](https://cdn.rawgit.com/man-n/man-n/master/logo.svg)
+# man-n
+View npm package READMEs with `man(1)`.
 
-View npm package READMEs with man.
+![screenshot of man-n showing the browserify docs](screenshot.png)
 
 ## Installation
 ```sh
