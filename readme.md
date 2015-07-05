@@ -16,13 +16,10 @@ $ man-n -h
   Options:
 
     -h, --help  output usage information
-    -l, --link  link `man-n` to `man n`
 
   Examples:
 
     $ man-n browserify  # show the browserify documentation
-    $ man-n --link      # link `man-n` to `man n`
-    $ man n browserify  # show the browserify documentation
 ```
 
 ## Aliasing
@@ -32,7 +29,7 @@ Tired of typing that dash? Add the following to your `.bashrc`,
 
 ```sh
 # Link `man-n` to `man n`
-$ which man-n > /dev/null && eval $(man-n --link)
+$ alias "man=man-n"
 ```
 
 ...and from now on, you can just type `man n` to access package

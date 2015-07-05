@@ -4,6 +4,8 @@
 # Constants.
 #
 
+readonly location="$_" # this must be the first command executed
+
 readonly original="$(which man)"
 readonly input="$(mktemp -t "manXXXXX")"
 readonly prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
@@ -33,15 +35,15 @@ EOF
 }
 
 #
-# If `--linked`, detect if this is a `n` page.
+# If file is sourced, detect if this is an `n` page.
 #
 
-if [ "$1" = "--linked" ]; then shift;
-  if [ "$1" = "n" ]; then shift;
-  else
+if [ "$location" = "$0" ]; then
+  if [ "$1" != "n" ]; then
     "$original" "$@"
     exit
   fi
+  shift
 fi
 
 #
@@ -51,7 +53,6 @@ fi
 case $1 in
   "")         usage; exit 1 ;;
   -h|--help)  usage; exit ;;
-  --link)     echo 'alias "man=man-n --linked"'; exit ;;
   *)          readonly name=$1 ;;
 esac
 
