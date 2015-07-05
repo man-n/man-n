@@ -11,6 +11,18 @@ mdastMan="$prefix/mdast-man"
 badges="$prefix/mdast-strip-badges"
 
 #
+# Usage.
+#
+
+usage () {
+  echo 'usage: man-n <package>'
+}
+
+[ ! "$1" ] && usage && exit 1
+[ "$1" = '-h' ] && usage && exit 0
+[ "$1" = '--help' ] && usage && exit 0
+
+#
 # Options.
 #
 
