@@ -29,7 +29,7 @@ Tired of typing that dash? Add the following to your `.bashrc`,
 `.bash_profile`, or `.zshrc`
 
 ```sh
-# Link `man-n` to `man n`
+# Link `man-n` to `man`
 $ alias "man=man-n --link"
 ```
 

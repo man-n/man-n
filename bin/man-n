@@ -42,7 +42,14 @@ link () {
     "$man_n" "$@"
     exit
   else
-    "$original" "$@" 2>/dev/null || "$man_n" "$@"
+    "$original" -w "$@" > /dev/null 2>&1
+
+    if [ "$?" = "0" ]; then
+      "$original" "$@"
+    else
+      "$man_n" "$@"
+    fi
+
     exit
   fi
 }
