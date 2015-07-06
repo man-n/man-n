@@ -66,6 +66,21 @@ case $1 in
 esac
 
 #
+# Get README.
+#
+
+readme="$(npm view "$name" readme 2> /dev/null)"
+
+#
+# Fail nicely by using the default man exit message.
+#
+
+if [ "$?" = "1" ]; then
+  "$original" "$@"
+  exit 1
+fi
+
+#
 # Options.
 #
 
@@ -86,7 +101,7 @@ readonly options="\
 # Create man-page.
 #
 
-npm view "$name" readme \
+echo "$readme" \
   | $mdast --no-ignore --no-rc --silent \
     --use "$badges" \
     --use "$mdastMan=$options" \
