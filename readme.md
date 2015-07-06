@@ -25,16 +25,18 @@ $ man-n -h
 
 ## Aliasing
 
-Tired of typing that dash? Add the following to your `.bashrc`,
-`.bash_profile`, or `.zshrc`
+Tired of typing that dash, or even that `n`? Add the following to your
+`.bashrc`, `.bash_profile`, or `.zshrc`
 
 ```sh
 # Link `man-n` to `man`
 $ alias "man=man-n --link"
 ```
 
-...and from now on, you can just type `man n` to access package
-documentation.
+...and from now on, you can just type `man browserify` to access package
+documentation. However, **man**(1) will prefer normal man pages, so when you
+wan’t to get the readme of **which**(n), use `man n which` instead of
+`man which`.
 
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
