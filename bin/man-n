@@ -4,6 +4,7 @@
 # Constants.
 #
 
+readonly man_n="$0"
 readonly original="$(which man)"
 readonly input="$(mktemp -t "manXXXXX")"
 readonly prefix="$(dirname "$0")/$(dirname "$(readlink "$0")")/../node_modules"
@@ -22,36 +23,38 @@ cat << EOF
   Options:
 
     -h, --help  output usage information
-    -l, --link  link \`man-n\` to \`man n\`
+    -l, --link  default to man(1)
 
   Examples:
 
-    $ man-n browserify  # show the browserify documentation
-    $ man-n --link      # link \`man-n\` to \`man n\`
-    $ man n browserify  # show the browserify documentation
+    $ man-n browserify          # show browserify docs
 EOF
 }
 
 #
-# If `--linked`, detect if this is a `n` page.
+# Switch between man(1) and man-n.
 #
 
-if [ "$1" = "--linked" ]; then shift;
-  if [ "$1" = "n" ]; then shift;
+link () {
+  shift
+  if [ "$1" = "n" ]; then
+    shift
+    "$man_n" "$@"
+    exit
   else
-    "$original" "$@"
+    "$original" "$@" 2>/dev/null || "$man_n" "$@"
     exit
   fi
-fi
+}
 
 #
-# CLI flags
+# CLI flags.
 #
 
 case $1 in
   "")         usage; exit 1 ;;
   -h|--help)  usage; exit ;;
-  --link)     echo 'alias "man=man-n --linked"'; exit ;;
+  -l|--link)  link "$@" ;;
   *)          readonly name=$1 ;;
 esac
 
