@@ -21,8 +21,6 @@ $ man-n -h
   Examples:
 
     $ man-n browserify          # show browserify docs
-    $ man-n --link ls           # show ls(1) docs
-    $ man-n --link n browserify # show browserify docs
 ```
 
 ## Aliasing

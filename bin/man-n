@@ -28,8 +28,6 @@ cat << EOF
   Examples:
 
     $ man-n browserify          # show browserify docs
-    $ man-n --link ls           # show ls(1) docs
-    $ man-n --link n browserify # show browserify docs
 EOF
 }
 
@@ -44,7 +42,7 @@ link () {
     "$man_n" "$@"
     exit
   else
-    "$original" "$@"
+    "$original" "$@" 2>/dev/null || "$man_n" "$@"
     exit
   fi
 }
