@@ -23,8 +23,8 @@
     "bin"
   ],
   "dependencies": {
-    "mdast": "^0.26.0",
-    "mdast-man": "^0.3.0",
-    "mdast-strip-badges": "^0.1.0"
+    "mdast": "^2.0.0",
+    "mdast-man": "^1.1.1",
+    "mdast-strip-badges": "^1.0.0"
   }
 }
