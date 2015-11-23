@@ -23,8 +23,29 @@
     "bin"
   ],
   "dependencies": {
-    "mdast": "^2.0.0",
-    "mdast-man": "^1.1.1",
-    "mdast-strip-badges": "^1.0.0"
+    "mdast": "2.0.0",
+    "mdast-man": "1.1.1",
+    "mdast-strip-badges": "1.0.0"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": [
+        "npm run exact"
+      ],
+      "pre-push": [],
+      "post-commit": [],
+      "post-merge": []
+    }
+  },
+  "scripts": {
+    "commit": "git-issues && commit-wizard",
+    "issues": "git-issues",
+    "exact": "exact-semver"
+  },
+  "devDependencies": {
+    "exact-semver": "1.2.0",
+    "git-issues": "1.2.0",
+    "pre-git": "1.3.1"
   }
 }

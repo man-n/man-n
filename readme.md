@@ -38,5 +38,13 @@ documentation. However, **man**(1) will prefer normal man pages, so when you
 wan’t to get the readme of **which**(n), use `man n which` instead of
 `man which`.
 
+## Development
+
+Several useful commands
+
+* See current open issues on GitHub `npm run isses`
+* Commit current changes with commit message wizard `npm run commit`
+* Remove fuzzy dependency versions `npm run exact`
+
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
